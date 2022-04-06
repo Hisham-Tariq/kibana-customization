@@ -103,6 +103,7 @@ if [ ! -d "/tmp/kibana" ];then
    echo "Something went wrong check the /var/log/customize-kibana.log for more information"
 else
    echo "Injecting the customizations..."
+   eval "cat /etc/kibana/kibana.yml > /etc/kibana/kibana.yml.backup"
    eval "rsync -a /tmp/kibana/  /etc/kibana/"
    echo "Successfully Injected restarting the Kibana Please wait..."
    eval "rm -r /tmp/kibana"
